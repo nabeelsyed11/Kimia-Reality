@@ -3,6 +3,9 @@ import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
+// Disable body parsing for file uploads
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -46,10 +49,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-// Disable body parsing for file uploads
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
